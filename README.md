@@ -1,3 +1,3 @@
 # underattack
 <b>testification of tests</b>
-<img src="underattack/UnderAttackLogo.png">
+<img src="UnderAttackLogo.png">
