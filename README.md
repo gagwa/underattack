@@ -1,2 +1,0 @@
-# underattack
-comics and graphics
