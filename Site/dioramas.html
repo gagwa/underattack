@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dioramas</title>
+<link href="glacial.css" rel="stylesheet" type="text/css">
+<link rel="icon" href="images/logoAttack.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+</head>
+<body onload="headerIm()" onresize="headerIm()">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+//SCROLLBAR SHENANIGANS- change width if scrollbar
+$(function(){
+    var popo = $('.containerBoard').hasScrollBarH() + $('.containerBoard').hasScrollBarIH();
+	if (popo > 0) {
+		$('.containerBoard').css("width", "calc(100vw + 17px)");
+	}else if (popo == 0){
+		$('.containerBoard').css("width", "100vw");
+	}
+	});(jQuery);
+(function($) {
+    $.fn.hasScrollBarH = function() {
+    return this.get(0).scrollHeight > this.height();
+    }
+	})(jQuery);
+(function($) {
+    $.fn.hasScrollBarIH = function() {
+    return this.get(0).scrollHeight > this.innerHeight();
+    }
+	})(jQuery);
+//HEADER
+function headerIm() {
+	if ($(document).width()>960){
+		document.getElementById("headerImage").src = "images/header3.png";
+	}else {
+		document.getElementById("headerImage").src = "images/headerSmall.png";
+	}
+}
+//Footer hide and up
+var anime = 0;
+function navbarCheck(){
+	var navbarvar = $('.navBar').offset();
+	var navbarheight = $('.navBar').height();
+	var divBottom = navbarvar.top + navbarheight;
+    if (divBottom < 0 ) { 
+		document.getElementById('footer').style.WebkitAnimation = "footerUp 1s";
+		document.getElementById('footer').style.animation = "footerUp 1s";
+		$('#footer').css("bottom", "0px");
+		anime = 1;
+    } else if ((divBottom > 0) && (anime == 1)){
+		document.getElementById('footer').style.WebkitAnimation = "footerHide 2s";
+		document.getElementById('footer').style.animation = "footerHide 2s";
+		$('#footer').css("bottom","-150px");
+    }
+}
+</script>
+
+
+<div class="containerBoard" onscroll="navbarCheck()">
+<div class="mainBoard" onscroll="navbarCheck()" >
+
+<!-- Header !! -->
+<div class="header"><img id="headerImage" src="images/header3.png"></img></div>
+
+<!-- navbar !! -->
+ <div class="navBar">
+  <div class="menu-1" onClick="parent.location='index.html'" value='Acceuil'>Acceuil</div>
+  <div class="menu-2" onClick="parent.location='galerie.html'" value='Galerie'>Galerie</div>
+  <div class="menu-3" onClick="parent.location='videos.html'" value='Videos'>Vidéos</div>
+  <div class="menu-5" onClick="parent.location='curriculum.html'" value='Curriculum'>Curriculum</div>  
+  <div class="menu-4" onClick="parent.location='dioramas.html'" value='Dioramas'>Divers</div>
+</div>
+
+
+<div class="row">
+
+
+
+<div class="containerGallery">
+<!-- here, a slide for each image, with an "onclick" evvent wich lauch a fun-ction below (gallery code)-->
+  <div class="mySlides">
+    <div class="numbertext">1 / 6</div>
+    <img id="myImg1" src="galerie/img1.png" onClick = "imgModal()" alt="Maurice Domaine">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">2 / 6</div>
+    <img id="myImg2" src="galerie/img2.png" onClick = "imgModal()" alt="Mundus ov Mortas">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">3 / 6</div>
+    <img id="myImg3" src="galerie/img3.png" onClick = "imgModal()" alt="Of Battle and Ancient Warcraft">
+  </div>
+    
+  <div class="mySlides">
+    <div class="numbertext">4 / 6</div>
+    <img id="myImg4" src="galerie/img4.png" onClick = "imgModal()" alt="OLDWORLD">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">5 / 6</div>
+    <img id="myImg5" src="galerie/img5.png" onClick = "imgModal()" alt="The FUNNEL Infinity">
+  </div>
+    
+  <div class="mySlides">
+    <div class="numbertext">6 / 6</div>
+    <img id="myImg6" src="galerie/img6.png" onClick = "imgModal()" alt="Me !">
+  </div>
+    
+  <a class="prev" onclick="plusSlides(-1)"><</a>
+  <a class="next" onclick="plusSlides(1)">></a>
+
+  <div class="caption-container">
+    <p id="captionCaption"></p>
+  </div>
+<!-- here, button for each image in the gallery -->
+  <div class="riw">
+    <div class="column-2">
+      <img class="demo cursor" src="galerie/img1.png" style="width:100%" onclick="currentSlide(1)" alt="Maurice Domaine"></div>
+    <div class="column-1">
+      <img class="demo cursor" src="galerie/img2.png" style="width:100%" onclick="currentSlide(2)" alt="Mundus ov Mortas">
+    </div>
+    <div class="column-1">
+      <img class="demo cursor" src="galerie/img3.png" style="width:100%" onclick="currentSlide(3)" alt="Of Battle and Ancient Warcraft">
+    </div>
+    <div class="column-1">
+      <img class="demo cursor" src="galerie/img4.png" style="width:100%" onclick="currentSlide(4)" alt="OLDWORLD">
+    </div>
+    <div class="column-1">
+      <img class="demo cursor" src="galerie/img5.png" style="width:100%" onclick="currentSlide(5)" alt="The FUNNEL Infinity">
+    </div>    
+    <div class="column-1">
+      <img class="demo cursor" src="galerie/img6.png" style="width:100%" onclick="currentSlide(6)" alt="Me">
+    </div>
+  </div>
+</div>
+<div id="myModal" class="modal">
+	<span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>
+
+<script>
+//GALLERY CODE
+// Get the modal
+var modal = document.getElementById('myModal');
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var slides = document.getElementsByClassName("mySlides");
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+
+//slideshow vvar
+var slideIndex = 1;
+showSlides(slideIndex);
+
+//slideshow boutons next/back
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+  if (slideIndex > slides.length) {slideIndex = 1}
+  if (slideIndex < 1) {slideIndex = slides.length}
+  captionText = document.getElementById("caption");
+
+
+}
+
+
+
+//MODAL GALLERY - all the buttons launch this fun-ction :
+imgModal = function(){
+    modal.style.display = "block";
+    modalImg.src = document.getElementById("myImg" + slideIndex).src;
+    captionText.innerHTML = document.getElementById("myImg" + slideIndex).alt;
+}
+//slideshow show current image
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+
+}
+//slideshow code
+function showSlides(n) {
+  var i;
+
+  var dots = document.getElementsByClassName("demo");
+  var captionCaptionText = document.getElementById("captionCaption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionCaptionText.innerHTML = dots[slideIndex-1].alt;
+  
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() { 
+    modal.style.display = "none";
+}
+
+</script>
+
+
+</div>
+
+<div class="footerPlus">Created by Lucien Lavoie
+  <u id="footerNoFont">Acceuil</u>
+  <u id="footerNoFont">Galerie</u>
+  <u id="footerNoFont">Vidéos</u>
+  <u id="footerNoFont">Curriculum</u>
+  <u id="footerNoFont">Divers</u>
+  <u id="footerNoFont">Welcome</u></div>
+
+
+</div>
+<div id="footer">Created by Lucien Lavoie
+  <u id="footerFont" onClick="parent.location='index.html'">Acceuil</u>
+  <u id="footerFont"onClick="parent.location='galerie.html'">Galerie</u>
+  <u id="footerFont"onClick="parent.location='videos.html'">Vidéos</u>
+  <u id="footerFont"onClick="parent.location='curriculum.html'">Curriculum</u>
+  <u id="footerFont"onClick="parent.location='dioramas.html'">Divers</u>
+  <u id="footerFont"onClick="parent.location='welcome.html'">Welcome</u>
+
+</div>
+</div>
+</body>
+</html>

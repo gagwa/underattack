@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Acceuil</title>
+<link href="glacial.css" rel="stylesheet" type="text/css">
+<link rel="icon" href="images/logoAttack.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+</head>
+<body onload="headerIm()" onresize="headerIm()">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+//SCROLLBAR SHENANIGANS- change width if scrollbar
+$(function(){
+    var popo = $('.containerBoard').hasScrollBarH() + $('.containerBoard').hasScrollBarIH();
+	if (popo > 0) {
+		$('.containerBoard').css("width", "calc(100vw + 17px)");
+	}else if (popo == 0){
+		$('.containerBoard').css("width", "100vw");
+	}
+	});(jQuery);
+(function($) {
+    $.fn.hasScrollBarH = function() {
+    return this.get(0).scrollHeight > this.height();
+    }
+	})(jQuery);
+(function($) {
+    $.fn.hasScrollBarIH = function() {
+    return this.get(0).scrollHeight > this.innerHeight();
+    }
+	})(jQuery);
+
+//HEADER
+function headerIm() {
+	if ($(document).width()>960){
+		document.getElementById("headerImage").src = "images/header4.png";
+	}else {
+		document.getElementById("headerImage").src = "images/headerSmall.png";
+	}
+}
+//Footer hide and up
+var anime = 0;
+function navbarCheck(){
+	var navbarvar = $('.navBar').offset();
+	var navbarheight = $('.navBar').height();
+	var divBottom = navbarvar.top + navbarheight;
+    if (divBottom < 0 ) { 
+		document.getElementById('footer').style.WebkitAnimation = "footerUp 1s";
+		document.getElementById('footer').style.animation = "footerUp 1s";
+		$('#footer').css("bottom", "0px");
+		anime = 1;
+    } else if ((divBottom > 0) && (anime == 1)){
+		document.getElementById('footer').style.WebkitAnimation = "footerHide 2s";
+		document.getElementById('footer').style.animation = "footerHide 2s";
+		$('#footer').css("bottom","-150px");
+    }
+}
+</script>
+<div class="containerBoard" onscroll="navbarCheck()">
+<div class="mainBoard" onscroll="navbarCheck()">
+
+<!-- Header !! -->
+<div class="header"><img id="headerImage" src="images/header4.png"></img></div>
+<!-- navbar !! -->
+ <div class="navBar">
+  <div class="menu-1" onClick="parent.location='index.html'" value='Acceuil'>Acceuil</div>
+  <div class="menu-2" onClick="parent.location='galerie.html'" value='Galerie'>Galerie</div>
+  <div class="menu-3" onClick="parent.location='videos.html'" value='Videos'>Vidéos</div>
+  <div class="menu-5" onClick="parent.location='curriculum.html'" value='Curriculum'>Curriculum</div>  
+  <div class="menu-4" onClick="parent.location='dioramas.html'" value='Dioramas'>Divers</div>
+
+</div>
+<div class="row">
+<div class="col-3 left">
+  <div class="aside" style="position: relative;">
+	
+    <a href="https://twitter.com/lucien_lavoie">
+	<img src="images/profile.png" style="width: 80%; height: auto; position: relative;">
+	<a href="https://twitter.com/lucien_lavoie">
+	<img src="images/twatter.png" style="width: 35%; height: auto; position: absolute; left: 60%; top: 30%;">
+	</a></img></img></a>
+	
+	<h2>Lavoie Lucien</h2>
+	<p>lavoie_lucien@protonmail.com</p>
+	<p><img src="images/tel.png" style="width: 10%; height: auto; margin-right: 5px;"></img> 0497/27.50.18 </p>
+  </div>
+</div>
+<div class="col-6">
+  <h1>Bienvenue,</h1>
+  <p>Je vous remercie de visiter UnderAttack, mon domaine professionnel. Voici <b>un résumé</b> de ce que vous trouverez en le parcourant:</p>
+  <p><b>Une galerie d'image</b>, où j'y expose mon travail. </p>
+  <p><b>Une partie vidéo</b>, contenant capsules et animations. </p>
+  <p>Et enfin, mon curriculum, détaillants mes différents aquis.</p>
+  <p>J'expose aussi d'autre oeuvres dans "Divers", via un hobby ou autre.</p>
+  
+</div>
+
+<div class="col-3 right">
+  <div class="aside">
+    <h2>Graphisme</h2>
+    <p>Dessin, compositions, 3D...</p>
+    <h2>Design</h2>
+    <p>Web design, mise en page, prise de vue...</p>
+    <h2>Audiovisuel</h2>
+    <p>Animation, FX et compositions, montage ...</p>
+  </div>
+</div>
+</div>
+<div id="colArticle">
+  <h1>Plus d'informations ...</h1>
+  <h3><b><u>Logiciels Aquis</u></b></h3>
+  <p><b>Adobe:</b> Photoshop, Illustrator, After Effect, Premiere, InDesign, Flash(AS2), Dreamweaver.</p>
+  <p><b>Autre (Audiovisuel):</b> Fusion8, SoundForge, Audacity, Toonboom Harmony, 3DSmax.</p>
+  <h3><b><u>Languages Web</u></b></h3>
+  <p><b>Sur NotePad++:</b> HTML, CSS, JavaScript (Ce site en est l'exemple)</p>
+  <p>Plus de détails sur mon<u id="footerFont" onClick="parent.location='curriculum.html'"><b>Curriculum</b></u></p>
+  
+</div>
+<div class="footerPlus">Created by Lucien Lavoie
+  <u id="footerNoFont">Acceuil</u>
+  <u id="footerNoFont">Galerie</u>
+  <u id="footerNoFont">Vidéos</u>
+  <u id="footerNoFont">Curriculum</u>
+  <u id="footerNoFont">Divers</u>
+  <u id="footerNoFont">Welcome</u></div>
+
+
+</div>
+<div id="footer">Created by Lucien Lavoie
+  <u id="footerFont" onClick="parent.location='index.html'">Acceuil</u>
+  <u id="footerFont" onClick="parent.location='galerie.html'">Galerie</u>
+  <u id="footerFont" onClick="parent.location='videos.html'">Vidéos</u>
+  <u id="footerFont" onClick="parent.location='curriculum.html'">Curriculum</u>
+  <u id="footerFont" onClick="parent.location='dioramas.html'">Divers</u>
+  <u id="footerFont" onClick="parent.location='welcome.html'">Welcome</u>
+
+</div>
+</div>
+</body>
+</html>

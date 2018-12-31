@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Curriculum</title>
+<link href="glacial.css" rel="stylesheet" type="text/css">
+<link rel="icon" href="images/logoAttack.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+</head>
+<body onload="headerIm()" onresize="headerIm()">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+//SCROLLBAR SHENANIGANS- change width if scrollbar
+$(function(){
+    var popo = $('.containerBoard').hasScrollBarH() + $('.containerBoard').hasScrollBarIH();
+	if (popo > 0) {
+		$('.containerBoard').css("width", "calc(100vw + 17px)");
+	}else if (popo == 0){
+		$('.containerBoard').css("width", "100vw");
+	}
+	});(jQuery);
+(function($) {
+    $.fn.hasScrollBarH = function() {
+    return this.get(0).scrollHeight > this.height();
+    }
+	})(jQuery);
+(function($) {
+    $.fn.hasScrollBarIH = function() {
+    return this.get(0).scrollHeight > this.innerHeight();
+    }
+	})(jQuery);
+
+//HEADER
+function headerIm() {
+	if ($(document).width()>960){
+		document.getElementById("headerImage").src = "images/header2.png";
+	}else {
+		document.getElementById("headerImage").src = "images/headerSmall.png";
+	}
+}
+//Footer hide and up
+var anime = 0;
+function navbarCheck(){
+	var navbarvar = $('.navBar').offset();
+	var navbarheight = $('.navBar').height();
+	var divBottom = navbarvar.top + navbarheight;
+    if (divBottom < 0 ) { 
+		document.getElementById('footer').style.WebkitAnimation = "footerUp 1s";
+		document.getElementById('footer').style.animation = "footerUp 1s";
+		$('#footer').css("bottom", "0px");
+		anime = 1;
+    } else if ((divBottom > 0) && (anime == 1)){
+		document.getElementById('footer').style.WebkitAnimation = "footerHide 2s";
+		document.getElementById('footer').style.animation = "footerHide 2s";
+		$('#footer').css("bottom","-150px");
+    }
+}
+</script>
+
+
+<div class="containerBoard" onscroll="navbarCheck()">
+<div class="mainBoard" onscroll="navbarCheck()">
+
+<!-- Header !! -->
+<div class="header"><img id="headerImage" src="images/header2.png"></img></div>
+
+<!-- navbar !! -->
+ <div class="navBar">
+  <div class="menu-1" onClick="parent.location='index.html'" value='Acceuil'>Acceuil</div>
+  <div class="menu-2" onClick="parent.location='galerie.html'" value='Galerie'>Galerie</div>
+  <div class="menu-3" onClick="parent.location='videos.html'" value='Videos'>Vidéos</div>
+  <div class="menu-5" onClick="parent.location='curriculum.html'" value='Curriculum'>Curriculum</div>  
+  <div class="menu-4" onClick="parent.location='dioramas.html'" value='Dioramas'>Divers</div>
+</div>
+
+
+<div class="row">
+
+<div class="normalBox">
+
+
+ <form method="get" action="">
+   <button type="submit">Download!</button>
+</form>
+   <button type="submit" onclick="jim()">Download!</button>
+
+</div>
+
+
+</div>
+
+<div class="footerPlus">Created by Lucien Lavoie
+  <u id="footerNoFont">Acceuil</u>
+  <u id="footerNoFont">Galerie</u>
+  <u id="footerNoFont">Vidéos</u>
+  <u id="footerNoFont">Curriculum</u>
+  <u id="footerNoFont">Divers</u>
+  <u id="footerNoFont">Welcome</u></div>
+
+
+</div>
+<div id="footer">Created by Lucien Lavoie
+  <u id="footerFont" onClick="parent.location='index.html'">Acceuil</u>
+  <u id="footerFont"onClick="parent.location='galerie.html'">Galerie</u>
+  <u id="footerFont"onClick="parent.location='videos.html'">Vidéos</u>
+  <u id="footerFont"onClick="parent.location='curriculum.html'">Curriculum</u>
+  <u id="footerFont"onClick="parent.location='dioramas.html'">Divers</u>
+  <u id="footerFont"onClick="parent.location='welcome.html'">Welcome</u>
+
+</div>
+</div>
+</body>
+</html>
