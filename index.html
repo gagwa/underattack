@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome</title>
+<link href="glacial.css" rel="stylesheet" type="text/css">
+<link rel="icon" href="images/logoAttack.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+</script>
+<!--  for gallery:1-hide scrollbar;2-div w/ scrollbar;3-div w/ gallery-->
+ <div class="scrollShow"> <!--1 -->
+<div id="containerShow"> <!--2 -->
+<div id="mainShow"> <!--3 -->
+
+<!-- gallery image, one for each image -->
+<div class="imageShow" ><img id="imgShow-1" src="images/welcome1.png" alt="Of Battle and Ancient Warcraft"></div>  
+<div class="imageShow" ><img id="imgShow-1" src="images/welcome2.png" alt="The Eye of Madness"></div>
+<div class="imageShow" ><img id="imgShow-1" src="images/welcome3.png" alt="Of Battle and Ancient Warcraft"></div>
+
+<!-- last one must be the same as the first -->
+<div class="imageShow" ><img id="imgShow-1" src="images/welcome1.png" alt="Of Battle and Ancient Warcraft"></div> 
+</div>
+</div>
+</div>
+<div class="logoUA"><img id="imgShow-2" src="images/headerSmall.png" alt="logo"></div>
+<div class="enter" onClick="parent.location='Site/index.html'" >ENTER</div>
+<script>
+//GALLERY SHOW by Lucien Lavoie, free to use  (:^p
+//clockTown = time between each img, maxgallery = number of image +1
+var clockTown = 4000;
+var maxGallery = 4;
+//check ratio img, set the loop in motion, don't touch anything
+var widthGallery = maxGallery * 100; //this calc the width in screens for the max size of the gallery
+document.getElementById("mainShow").style.width = widthGallery + "vw"; //apply the width style with the correct css unit syst
+document.getElementById("containerShow").scrollLeft = 0; //initialise gallery position at 0
+var unitShow = document.getElementById("containerShow").offsetWidth; //get width for position in the future
+var main = unitShow;
+var gallery = 1;
+var minGallery = maxGallery - 1;//main is our final unit, gallery is our position and min gallery is the position of the last image
+//loop begin here
+var begin = setInterval(fullShow, clockTown);//clockTown
+function fullShow() {
+			//refresh lenght variable just in case
+			unitShow = document.getElementById("containerShow").offsetWidth;
+			//we take the length and multiply it by its position in the gallery
+			main = unitShow * gallery;
+			//we go to the length
+			$("#containerShow").animate({scrollLeft: main + "px"})
+			//we add a position in the gallery for next time
+			gallery ++;
+			//we verify if we are in the last position of the gallery 
+			//(wich is the same image than the first one in the gallery)
+			if (gallery > minGallery) {//if so we do:
+				//reset gallery to the first position
+				gallery = 1;
+				//we launch a event to go back
+				var resetShow = setTimeout (reset, 450);//450 = 400 is the time for the animation slide to finish. We add 50, or it bug sometimes
+				function reset() {
+					//"teleport" to first position
+					document.getElementById("containerShow").scrollLeft = 0;
+
+			}
+			}
+			//and again ^
+		
+		
+		
+	}
+	
+	
+	
+
+</script>
+
+
+
+</body>
+</html>
