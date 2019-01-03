@@ -12,7 +12,15 @@
 <script type="text/javascript">
 //SCROLLBAR SHENANIGANS- change width if scrollbar
 $(function(){
-    var popo = $('.containerBoard').hasScrollBarH() + $('.containerBoard').hasScrollBarIH();
+
+var popo = $('.containerBoard').hasScrollBarH() + $('.containerBoard').hasScrollBarIH();
+var ua = navigator.userAgent.toLowerCase();
+var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
+var isIOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+
+	if((isAndroid) || (isIOS)) {
+	popo=0;
+	}
 	if (popo > 0) {
 		$('.containerBoard').css("width", "calc(100vw + 17px)");
 	}else if (popo == 0){
