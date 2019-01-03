@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Welcome</title>
+<title>Welcome2</title>
 <link href="Site/glacial.css" rel="stylesheet" type="text/css">
 <link rel="icon" href="Site/images/logoAttack.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,18 +18,23 @@
 <div id="mainShow"> <!--3 -->
 
 <!-- gallery image, one for each image -->
-<div class="imageShow" ><img id="imgShow-1" src="Site/images/welcome1.png" alt="Of Battle and Ancient Warcraft"></div>  
-<div class="imageShow" ><img id="imgShow-1" src="Site/images/welcome2.png" alt="The Eye of Madness"></div>
-<div class="imageShow" ><img id="imgShow-1" src="Site/images/welcome3.png" alt="Of Battle and Ancient Warcraft"></div>
+<div class="imageShow" ><img id="imgShow-1" src="Site/images/welcome1.png" ></div>  
+<div class="imageShow" ><img id="imgShow-1" src="Site/images/welcome2.png" ></div>
+<div class="imageShow" ><img id="imgShow-1" src="Site/images/welcome3.png" ></div>
 
 <!-- last one must be the same as the first -->
-<div class="imageShow" ><img id="imgShow-1" src="Site/images/welcome1.png" alt="Of Battle and Ancient Warcraft"></div> 
+<div class="imageShow" ><img id="imgShow-1" src="Site/images/welcome1.png" ></div> 
 </div>
 </div>
 </div>
-<div class="logoUA"><img id="imgShow-2" src="Site/images/headerSmall.png" alt="logo"></div>
+<div class="logoUA"><img id="imgShow-2" src="Site/images/headerSmall.png"></div>
 <div class="enter" onClick="parent.location='Site/index.html'" >ENTER</div>
 <script>
+var ua = navigator.userAgent.toLowerCase();
+var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
+	if(isAndroid) {
+		$('body').css("height", "calc(100vh - 56px)");
+	}
 //GALLERY SHOW by Lucien Lavoie, free to use  (:^p
 //clockTown = time between each img, maxgallery = number of image +1
 var clockTown = 4000;
