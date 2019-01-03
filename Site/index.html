@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Accueil2</title>
+<title>Accueil</title>
 <link href="glacial.css" rel="stylesheet" type="text/css">
 <link rel="icon" href="images/logoAttack.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,9 +17,24 @@ var popo = $('.containerBoard').hasScrollBarH() + $('.containerBoard').hasScroll
 var ua = navigator.userAgent.toLowerCase();
 var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
 var isIOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+var iDevices = [
+    'iPad Simulator',
+    'iPhone Simulator',
+    'iPod Simulator',
+    'iPad',
+    'iPhone',
+    'iPod'
+  ];
 
+	if (!!navigator.platform) {
+		while (iDevices.length) {
+			if (navigator.platform === iDevices.pop()){ 
+			popo=0; 
+			}
+		}
+	}
 	if(isAndroid) {
-	popo=0;
+		popo=0;
 	}
 	if (popo > 0) {
 		$('.containerBoard').css("width", "calc(100vw + 17px)");
@@ -73,7 +88,7 @@ function navbarCheck(){
 <div class="header"><img id="headerImage" src="images/header4.png"></img></div>
 <!-- navbar !! -->
  <div class="navBar">
-  <div class="menu-1" onClick="parent.location='index.html'" value='Acceuil'>Acceuil</div>
+  <div class="menu-1" onClick="parent.location='index.html'" value='Accueil'>Accueil</div>
   <div class="menu-2" onClick="parent.location='galerie.html'" value='Galerie'>Galerie</div>
   <div class="menu-3" onClick="parent.location='videos.html'" value='Videos'>Vidéos</div>
   <div class="menu-5" onClick="parent.location='curriculum.html'" value='Curriculum'>Curriculum</div>  
