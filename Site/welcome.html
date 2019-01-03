@@ -30,6 +30,11 @@
 <div class="logoUA"><img id="imgShow-2" src="images/headerSmall.png" alt="logo"></div>
 <div class="enter" onClick="parent.location='index.html'" >ENTER</div>
 <script>
+var ua = navigator.userAgent.toLowerCase();
+var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
+if(isAndroid) {
+	$('body').css("height", "calc(100vh - 56px)");
+}
 //GALLERY SHOW by Lucien Lavoie, free to use  (:^p
 //clockTown = time between each img, maxgallery = number of image +1
 var clockTown = 4000;
