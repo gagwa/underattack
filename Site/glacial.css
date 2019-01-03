@@ -535,7 +535,7 @@ img {
 	}
 	/* image show welcome*/
 	.scrollShow{
-	width: 500vw;
+	width: 100vw;
 	height: calc(141vw - 17px);
 	max-height: calc(75vh - 17px);
 	overflow: hidden;
