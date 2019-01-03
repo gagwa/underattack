@@ -52,15 +52,17 @@ function navbarCheck(){
 	var navbarvar = $('.navBar').offset();
 	var navbarheight = $('.navBar').height();
 	var divBottom = navbarvar.top + navbarheight;
+	var pixMoove = 0
     if (divBottom < 0 ) { 
 		document.getElementById('footer').style.WebkitAnimation = "footerUp 1s";
 		document.getElementById('footer').style.animation = "footerUp 1s";
 		$('#footer').css("bottom", "0px");
 		anime = 1;
     } else if ((divBottom > 0) && (anime == 1)){
+		pixMoove = 0 - document.getElementById('footer').height;
 		document.getElementById('footer').style.WebkitAnimation = "footerHide 2s";
 		document.getElementById('footer').style.animation = "footerHide 2s";
-		$('#footer').css("bottom","-150px");
+		$('#footer').css("bottom",pixMoove+"px");
     }
 }
 </script>
