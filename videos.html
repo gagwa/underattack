@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head >
+<title>Vidéos</title>
+<link href="glacial.css" rel="stylesheet" type="text/css">
+<link rel="icon" href="images/logoAttack.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+</head>
+<body onload="headerIm()" onresize="headerIm()">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+//SCROLLBAR SHENANIGANS- change width if scrollbar
+$(function(){
+var mobileHeight = 0;
+var footerHeight = 0;
+var smallBox = $('.containerBoard').hasScrollBarH() + $('.containerBoard').hasScrollBarIH();
+var ua = navigator.userAgent.toLowerCase();
+var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
+var isIOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+var iDevices = [
+    'iPad Simulator',
+    'iPhone Simulator',
+    'iPod Simulator',
+    'iPad',
+    'iPhone',
+    'iPod'
+  ];
+
+	if (!!navigator.platform) {
+		while (iDevices.length) {
+			if (navigator.platform === iDevices.pop()){ 
+			smallBox=0; 
+			mobileHeight = 56;
+			}
+		}
+	}
+	if(isAndroid) {
+		smallBox=0;
+		mobileHeight = 56;
+	}
+	if (smallBox > 0) {
+		$('.containerBoard').css("width", "calc(100vw + 17px)");
+		footerHeight = $('#footer').height()+40;
+	}else if (smallBox == 0){
+		$('.containerBoard').css("width", "100vw");
+		footerHeight = 0;
+		
+	}
+	var totalMobile = mobileHeight + footerHeight;
+	$('#footerMobile').css("height",totalMobile+"px");
+	});(jQuery);
+(function($) {
+    $.fn.hasScrollBarH = function() {
+    return this.get(0).scrollHeight > this.height();
+    }
+	})(jQuery);
+(function($) {
+    $.fn.hasScrollBarIH = function() {
+    return this.get(0).scrollHeight > this.innerHeight();
+    }
+	})(jQuery);
+
+//HEADER
+function headerIm() {
+	if ($(document).width()>960){
+		document.getElementById("headerImage").src = "images/header2.png";
+	}else {
+		document.getElementById("headerImage").src = "images/headerSmall.png";
+	}
+}
+//Footer hide and up
+var anime = 0;
+function navbarCheck(){
+	var navbarvar = $('.navBar').offset();
+	var navbarheight = $('.navBar').height();
+	var divBottom = navbarvar.top + navbarheight;
+    if (divBottom < 0 ) { 
+		document.getElementById('footer').style.WebkitAnimation = "footerUp 1s";
+		document.getElementById('footer').style.animation = "footerUp 1s";
+		$('#footer').css("bottom", "0px");
+		anime = 1;
+    } else if ((divBottom > 0) && (anime == 1)){
+		document.getElementById('footer').style.WebkitAnimation = "footerHide 2s";
+		document.getElementById('footer').style.animation = "footerHide 2s";
+		$('#footer').css("bottom","-150px");
+    }
+}
+</script>
+
+
+<div class="containerBoard" onscroll="navbarCheck()">
+<div class="mainBoard" onscroll="navbarCheck()">
+
+<!-- Header !! -->
+<div class="header" ><img id="headerImage" src=""></img></div>
+
+<!-- navbar !! -->
+ <div class="navBar">
+  <div class="menu-1" onClick="parent.location='accueil.html'" value='Accueil'>Accueil</div>
+  <div class="menu-2" onClick="parent.location='galerie.html'" value='Galerie'>Galerie</div>
+  <div class="menu-3" onClick="parent.location='videos.html'" value='Videos'>Vidéos</div>
+  <div class="menu-5" onClick="parent.location='curriculum.html'" value='Curriculum'>Curriculum</div>  
+  <div class="menu-4" onClick="parent.location='dioramas.html'" value='Dioramas'>Divers</div>
+</div>
+
+
+<div class="row">
+
+	<!-- VIDEOS -->
+	<div class="videoMain">
+		<!-- VIDEO START -->
+		
+	<div class="video-1"> <div class="videoTitre-1">Chat Peinture - Art vers Animé (Harmony 14) - Nuit </div>
+	<div class="youtube-1"><!-- YOUTUBE LINK HERE -->
+	<iframe class="VideoTube" src="" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	</div>
+	<div class="descriptionVideo-1">Petit mise en scène de comic strip (Artiste : <i>Gabriel Lefebvre</i>) à la demande de l'artiste. réalisé sur toonboom <b>Harmony 14</b>, avec une simple rigging.</div>
+	</div>
+	
+	<!-- VIDEO END -->
+	
+			<!-- VIDEO START -->
+		
+	<div class="video-1"> <div class="videoTitre-1">Chat Peinture - Art vers Animé (Harmony 14) - Nuit </div>
+	<div class="youtube-1"><!-- YOUTUBE LINK HERE -->
+	<iframe class="VideoTube" src="" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	</div>
+	<div class="descriptionVideo-1">Petit mise en scène de comic strip (Artiste : <i>Gabriel Lefebvre</i>) à la demande de l'artiste. réalisé sur toonboom <b>Harmony 14</b>, avec une simple rigging.</div>
+	</div>
+	
+	<!-- VIDEO END -->		<!-- VIDEO START -->
+		
+	<div class="video-1"> <div class="videoTitre-1">Chat Peinture - Art vers Animé (Harmony 14) - Nuit </div>
+	<div class="youtube-1"><!-- YOUTUBE LINK HERE -->
+	<iframe class="VideoTube" src="" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	</div>
+	<div class="descriptionVideo-1">Petit mise en scène de comic strip (Artiste : <i>Gabriel Lefebvre</i>) à la demande de l'artiste. réalisé sur toonboom <b>Harmony 14</b>, avec une simple rigging.</div>
+	</div>
+	
+	<!-- VIDEO END -->
+	
+	</div>
+	</div>
+
+<div id="footerMobile"></div>
+</div>
+<div id="footer">Created by Lucien Lavoie
+  <u id="footerFont" onClick="parent.location='accueil.html'">Accueil</u>
+  <u id="footerFont"onClick="parent.location='galerie.html'">Galerie</u>
+  <u id="footerFont"onClick="parent.location='videos.html'">Vidéos</u>
+  <u id="footerFont"onClick="parent.location='curriculum.html'">Curriculum</u>
+  <u id="footerFont"onClick="parent.location='dioramas.html'">Divers</u>
+  <u id="footerFont"onClick="parent.location='index.html'">Welcome</u>
+
+</div>
+</div>
+</body>
+</html>
