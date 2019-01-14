@@ -13,7 +13,7 @@
 //SCROLLBAR SHENANIGANS- change width if scrollbar
 function getMobileOperatingSystem() {
   var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-
+	alert("android");
       // Windows Phone must come first because its UA also contains "Android"
     if (/windows phone/i.test(userAgent)) {
         return "Windows Phone";
@@ -21,7 +21,7 @@ function getMobileOperatingSystem() {
 
     if (/android/i.test(userAgent)) {
         return "Android";
-	    alert("android");
+	    
     }
 
     // iOS detection from: http://stackoverflow.com/a/9039885/177710
