@@ -20,6 +20,7 @@ check = 1;
 (navigator.userAgent||navigator.vendor||window.opera,'http://detectmobilebrowser.com/mobile');
 //have or have not scrollbar
 $(function(){
+
 var smallBox = $('.containerBoard').hasScrollBarH() + $('.containerBoard').hasScrollBarIH();
 var footerHeight = 0;
 if (check == 0) {
@@ -54,13 +55,14 @@ $('#footerMobile').css("height",footerHeight+"px");
 
 //HEADER
 function headerIm() {
-
+	
 	if ($(document).width()>960){
 		document.getElementById("headerImage").src = "images/header4.png";
 	}
-	if ((check == 1)&&($(document).width()>959)) {
+	if ((check == 1)&&($(document).width()>799)) {
 		document.getElementById("headerImage").src = "images/header4.png";
-	}else if (check == 1) {
+		alert("Souhail est Beau");
+	}else if ((check == 1)||($(document).width()<800)) {
 		document.getElementById("headerImage").src = "images/headerSmall.png";
 	}
 }
