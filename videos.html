@@ -12,34 +12,19 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 //SCROLLBAR SHENANIGANS- change width if scrollbar
-$(function(){
-var mobileHeight = 0;
-var footerHeight = 0;
-var smallBox = $('.containerBoard').hasScrollBarH() + $('.containerBoard').hasScrollBarIH();
-var ua = navigator.userAgent.toLowerCase();
-var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
-var isIOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
-var iDevices = [
-    'iPad Simulator',
-    'iPhone Simulator',
-    'iPod Simulator',
-    'iPad',
-    'iPhone',
-    'iPod'
-  ];
 
-	if (!!navigator.platform) {
-		while (iDevices.length) {
-			if (navigator.platform === iDevices.pop()){ 
-			smallBox=0; 
-			mobileHeight = 56;
-			}
-		}
-	}
-	if(isAndroid) {
-		smallBox=0;
-		mobileHeight = 56;
-	}
+//check if mobile http://detectmobilebrowser.com/mobile
+var check = 0;
+(function(a,b){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4)))
+check = 1;
+})
+(navigator.userAgent||navigator.vendor||window.opera,'http://detectmobilebrowser.com/mobile');
+//have or have not scrollbar
+$(function(){
+
+var smallBox = $('.containerBoard').hasScrollBarH() + $('.containerBoard').hasScrollBarIH();
+var footerHeight = 0;
+if (check == 0) {
 	if (smallBox > 0) {
 		$('.containerBoard').css("width", "calc(100vw + 17px)");
 		footerHeight = $('#footer').height()+40;
@@ -48,12 +33,19 @@ var iDevices = [
 		footerHeight = 0;
 		
 	}
-	var totalMobile = mobileHeight + footerHeight;
-	$('#footerMobile').css("height",totalMobile+"px");
+} 
+if (check == 1) {
+	footerHeight = $('#footer').height()+90;
+	$('.containerBoard').css("width", "100vw");
+}
+$('#footerMobile').css("height",footerHeight+"px");
+
+
 	});(jQuery);
 (function($) {
     $.fn.hasScrollBarH = function() {
     return this.get(0).scrollHeight > this.height();
+	
     }
 	})(jQuery);
 (function($) {
@@ -64,9 +56,13 @@ var iDevices = [
 
 //HEADER
 function headerIm() {
+	
 	if ($(document).width()>960){
-		document.getElementById("headerImage").src = "images/header2.png";
-	}else {
+		document.getElementById("headerImage").src = "images/header3.png";
+	}
+	if ((check == 1)&&($(document).width()>799)) {
+		document.getElementById("headerImage").src = "images/header3.png";
+	}else if ((check == 1)||($(document).width()<800)) {
 		document.getElementById("headerImage").src = "images/headerSmall.png";
 	}
 }
@@ -102,59 +98,154 @@ function navbarCheck(){
   <div class="menu-2" onClick="parent.location='galerie.html'" value='Galerie'>Galerie</div>
   <div class="menu-3" onClick="parent.location='videos.html'" value='Videos'>Vidéos</div>
   <div class="menu-5" onClick="parent.location='curriculum.html'" value='Curriculum'>Curriculum</div>  
-  <div class="menu-4" onClick="parent.location='dioramas.html'" value='Dioramas'>Divers</div>
 </div>
 
 
-<div class="row">
-
-	<!-- VIDEOS -->
-	<div class="videoMain">
-		<!-- VIDEO START -->
-		
-	<div class="video-1"> <div class="videoTitre-1">Chat Peinture - Art vers Animé (Harmony 14) - Nuit </div>
-	<div class="youtube-1"><!-- YOUTUBE LINK HERE -->
-	<iframe class="VideoTube" src="" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="row " >
+	<div class="video-1"> 
+	<div style="position: relative;">
+		<a class="prev" onclick="plusVids(-1)"><</a>
+		<a class="next" onclick="plusVids(1)">></a>
+		<div id="videoTitre"class="videoTitre-1"></div>
+		<div class="youtube-1"><iframe id="videoFrame" width="100%" height="100%" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 	</div>
-	<div class="descriptionVideo-1">Petit mise en scène de comic strip (Artiste : <i>Gabriel Lefebvre</i>) à la demande de l'artiste. réalisé sur toonboom <b>Harmony 14</b>, avec une simple rigging.</div>
-	</div>
-	
-	<!-- VIDEO END -->
-	
-			<!-- VIDEO START -->
-		
-	<div class="video-1"> <div class="videoTitre-1">Chat Peinture - Art vers Animé (Harmony 14) - Nuit </div>
-	<div class="youtube-1"><!-- YOUTUBE LINK HERE -->
-	<iframe class="VideoTube" src="" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-	</div>
-	<div class="descriptionVideo-1">Petit mise en scène de comic strip (Artiste : <i>Gabriel Lefebvre</i>) à la demande de l'artiste. réalisé sur toonboom <b>Harmony 14</b>, avec une simple rigging.</div>
-	</div>
-	
-	<!-- VIDEO END -->		<!-- VIDEO START -->
-		
-	<div class="video-1"> <div class="videoTitre-1">Chat Peinture - Art vers Animé (Harmony 14) - Nuit </div>
-	<div class="youtube-1"><!-- YOUTUBE LINK HERE -->
-	<iframe class="VideoTube" src="" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-	</div>
-	<div class="descriptionVideo-1">Petit mise en scène de comic strip (Artiste : <i>Gabriel Lefebvre</i>) à la demande de l'artiste. réalisé sur toonboom <b>Harmony 14</b>, avec une simple rigging.</div>
-	</div>
-	
-	<!-- VIDEO END -->
-	
-	</div>
+	<div id="descriptionVideo"class="descriptionVideo-1"></div>
 	</div>
 
+	<div class="riw">
+		<div class="column-2">
+			<img class="demo cursor" src="images/vid1.png" style="width:100%" onclick="currentVid(1)" alt="Inside the Circle of Stones 2018">
+		</div>
+		<div class="column-1">
+			<img class="demo cursor" src="images/vid2.png" style="width:100%" onclick="currentVid(2)" alt="Fantasy (WIP) 2018">
+		</div>
+		<div class="column-1">
+			<img class="demo cursor" src="images/vid3.png" style="width:100%" onclick="currentVid(3)" alt="The Eye of Madness 2018">
+		</div>
+		<div class="column-1">
+			<img class="demo cursor" src="images/vid4.png" style="width:100%" onclick="currentVid(4)" alt="Of Battle and Ancient Warcraft, C.V. cover 2018">
+		</div>
+		<div class="column-1">
+			<img class="demo cursor" src="images/vid5.png" style="width:100%" onclick="currentVid(5)" alt="Mundus ov Mortas 2018">
+		</div>    
+		<div class="column-1">
+			<img class="demo cursor" src="images/vid6.png" style="width:100%" onclick="currentVid(6)" alt="Garden of the Gods 2018">
+		</div>
+    </div>
+	<div class="riw">
+		<div class="column-2">
+			<img class="demo cursor" src="images/vid7.png" style="width:100%" onclick="currentVid(7)" alt="Inside the Circle of Stones 2018">
+		</div>
+		<div class="column-1">
+			<img class="demo cursor" src="images/vid8.png" style="width:100%" onclick="currentVid(8)" alt="Fantasy (WIP) 2018">
+		</div>
+		<div class="column-1">
+			<img class="demo cursor" src="images/vid9.png" style="width:100%" onclick="currentVid(9)" alt="The Eye of Madness 2018">
+		</div>
+		<div class="column-1">
+			<img class="demo cursor" src="images/vid10.png" style="width:100%" onclick="currentVid(10)" alt="Of Battle and Ancient Warcraft, C.V. cover 2018">
+		</div>
+		<div class="column-1">
+			<img class="demo cursor" src="images/vid11.png" style="width:100%" onclick="currentVid(11)" alt="Mundus ov Mortas 2018">
+		</div>    
+		<div class="column-1">
+			<img class="demo cursor" src="images/vid12.png" style="width:100%" onclick="currentVid(12)" alt="Garden of the Gods 2018">
+		</div>
+    </div>
+  </div>
+
+<script>
+var vid = [ "", 
+			"https://www.youtube.com/embed/SPKpYGj8Ihg", 
+			"https://www.youtube.com/embed/FonVAhrhMag",
+			"https://www.youtube.com/embed/0WJ0codgwkc",
+			"https://www.youtube.com/embed/9Ij4A8SIBuY",
+			"https://www.youtube.com/embed/nuFfEmHs18I",
+			"https://www.youtube.com/embed/I6ObZl0x-5Q",
+			"https://www.youtube.com/embed/Pzm8oJvyjck",
+			"https://www.youtube.com/embed/jVh7_oPd3rI",
+			"https://www.youtube.com/embed/On2qFx7ml7U",
+			"https://www.youtube.com/embed/Fv2ylwSLiT4",
+			"https://www.youtube.com/embed/uYHMkkGy1nM",
+			"https://www.youtube.com/embed/QYBQrPOgO3E"
+			];
+var tit = [ "", 
+			"Pass Animation 1 , Accueil", 
+			"Chat Peinture - Art vers Animé (Harmony 14) - Nuit",
+			"Chat Peinture - Art vers Animé (Harmony 14) - Cirque",
+			"Chat Peinture - Art vers Animé (Harmony 14) - Plage",
+			"8 kilobytes of Memories (3D - Mise en Scène)",
+			"Harmony (ToonBoom) Experience - Rama",
+			"Pass, Capsule Terril",
+			"Pass, Capsule Scolaire",
+			"Pass, Capsule Estivale",
+			"Lost in Mordheim",
+			"Illusion à Saint-Ghislain",
+			"Hoax City",
+			];
+var des = [ "", 
+			"Vidéo d'<b>animation 2D</b> vectorisée pour acceuillir les visiteur du P.A.S.S., en particulier pour les familles.<br>Réalisé avec <b>After Effect.</b></br>",
+			"Petit mise en scène de comic strip (Artiste : <i>Gabriel Lefebvre</i>) à la demande de l'artiste. réalisé sur toonboom <b>Harmony 14</b>, avec une simple rigging.",
+			"Petit mise en scène de comic strip (Artiste : <i>Gabriel Lefebvre</i>) à la demande de l'artiste. réalisé sur toonboom <b>Harmony 14</b>, avec une simple rigging.",
+			"Petit mise en scène de comic strip (Artiste : <i>Gabriel Lefebvre</i>) à la demande de l'artiste. réalisé sur toonboom <b>Harmony 14</b>, avec une simple rigging.",
+			"Mise en scène d'un <b>objet 3D</b> réaliser pour une formation 3D (bachelier). Petite vidéo avec effet sonore, et jeu de lumière. <b>3Ds max 2016 et Fusion 8</b>",
+			"Vidéo où j'expérimente ma première utilisation sérieuse de <b>Harmony 14</b>.<br>Jeu d'ombre et lumière principalement, j'ai expérimenter beaucoup avec les calques et l'outil node pour des effets de transparence.</br> <br>En Outre, la vidéo dépicte une scène du livre <i>\"Rendez-vous avec Rama\"</i>, de <i>A.C. Clark.</i>",
+			"Capsule vidéo introductive sur le Terril (colline artificielle) pour les visiteurs. Prises de vues prises sur place.<br>Réalisé avec <b>After Effect.</b></br>", 
+			"Capsule vidéo visant les écoles de tout types (maternelle, primaire et secondaire). Prises de vues prises sur place.<br>Réalisé avec <b>After Effect.</b></br>",
+			"Capsule vidéo destiné au famille pour l'été 2017 au P.A.S.S..<br>Réalisé avec <b>After Effect.</b></br>",
+			"Diorama de ruines médiavales créer à partir de polistyrène d'isolation, basalt, mousse et sable (50cm*50cm). Composition réalisée sur <b>Black magic Fusion 7</b>.",
+			"Montage créer dans <b>Black Magic Fusion 7</b>, tourner à Saint Ghislain (2016). Bruits rajouter due au mauvaises séquences sur fond vert.",
+			"Tourner à Saint Ghislain (2016). Model 3D réaliser sur <b>Autodesk 3DS Max 2016</b>, et intégré sur <b>Black magic Fusion 7</b>.",
+			];
+var vidIndex = 1;
+var vidFrame = document.getElementById("videoFrame");
+var vidTitle = document.getElementById("videoTitre");
+var vidText = document.getElementById("descriptionVideo");
+var dots = document.getElementsByClassName("demo");
+var vidMax = 12;
+
+dots[vidIndex-1].className += " active";
+vidFrame.src = vid[vidIndex];
+vidText.innerHTML = des[vidIndex];
+vidTitle.innerHTML = tit[vidIndex];
+function plusVids(n) {
+  vidLyb(vidIndex += n);
+	if (vidIndex > vidMax) {vidIndex = 1}
+	if (vidIndex < 1) {vidIndex = vidMax}
+}
+function currentVid(n) {
+  vidLyb(vidIndex = n);
+}
+vidLyb = function(n){
+	var i;
+	dots = document.getElementsByClassName("demo");
+	if (n > vidMax) {vidIndex = 1}
+	if (n < 1) {vidIndex = vidMax}
+	vidFrame.src = vid[vidIndex];
+	vidText.innerHTML = des[vidIndex];
+	vidTitle.innerHTML = tit[vidIndex];
+	for (i = 0; i < dots.length; i++) {
+		dots[i].className = dots[i].className.replace(" active", "");
+	}
+	dots[vidIndex-1].className += " active";
+}
+
+
+
+
+</script>
 <div id="footerMobile"></div>
 </div>
-<div id="footer">Created by Lucien Lavoie
+<div id="footer"><div style=" float: left;  width: 345px; margin-left: calc(50% - 172px);"><div style="width: 300px; padding: 5px;position: relative;">
   <u id="footerFont" onClick="parent.location='accueil.html'">Accueil</u>
-  <u id="footerFont"onClick="parent.location='galerie.html'">Galerie</u>
-  <u id="footerFont"onClick="parent.location='videos.html'">Vidéos</u>
-  <u id="footerFont"onClick="parent.location='curriculum.html'">Curriculum</u>
-  <u id="footerFont"onClick="parent.location='dioramas.html'">Divers</u>
-  <u id="footerFont"onClick="parent.location='index.html'">Welcome</u>
-
-</div>
+  <u id="footerFont" onClick="parent.location='galerie.html'">Galerie</u>
+  <u id="footerFont" onClick="parent.location='videos.html'">Vidéos</u>
+  <u id="footerFont" onClick="parent.location='curriculum.html'">Curriculum</u>
+  <u id="footerFont" onClick="parent.location='index.html'">Welcome</u>
+  <a href="https://twitter.com/lucien_lavoie">
+	<img src="images/twatter.png" style="width: 30px; position: absolute; bottom: -3px;"></img>
+  </a>
+ </div>
 </div>
 </body>
 </html>
