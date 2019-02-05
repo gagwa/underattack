@@ -1,6 +1,12 @@
 * {
     box-sizing: border-box;
 	}
+:root{
+	--scaledDiv : auto;
+	--scaledDiv : 1vw;
+	--scaledFontTitle: 15px;
+
+}
 .row::after {
     content: "";
     clear: both;
@@ -9,23 +15,30 @@
 }
 [class*="col-"] {
 	float: left;
-	padding: 15px;
+
 }
 .footerMobile{
 	 width: 100%;
 	 max-width: 960px;
-	 background-color: green;
+	 background-color: rgba(255,255,255,0);
 
+}
+.wrap {
+    // -webkit-overflow-scrolling: touch; Non-standard! 
+    overflow-y: scroll;
 }
 #colArticle{
 	float: inherit;
-	width: auto;
-	padding: 15px;
-	background-color: rgba(241,241,241,1.00);
-	border: 1px solid rgba(204,204,204,1.00);
-	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+	width: 100%;
 	display: block;
-	margin: 0px 15px 0px 15px;
+	padding-left: 1%;
+	padding-right: 1%;
+	background-color: rgba(255,255,255,1.00);
+	border: 1px solid rgba(218,218,218,1.00);
+	color: rgba(0,0,0,1.00);
+	font-family: Arial, sans-serif;
+	font-size: 15px;
+	color: #383838;
 }
 
 html {
@@ -57,7 +70,7 @@ body {
 }
 [class*="video-" ] {
 	width: 90%;
-	max-width: 560px;
+	
 	height: auto;
 	background-color: rgba(241,241,241,1.00);
 	border: 1px solid rgba(204,204,204,1.00);
@@ -90,7 +103,8 @@ body {
 	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
 }
 [class*="youtube-" ]{
-    width: 76%;
+    width: 95%;
+	max-width: 560px;
     height:315px;
 	margin-left: auto;
 	margin-right: auto;
@@ -207,7 +221,7 @@ body {
 	letter-spacing: 5px;
 	font-weight: bold;
 	float: left;
-	width: 20%;
+	width: 25%;
 	height:26px;
 }
 [class*="menu-" ]:hover{
@@ -215,17 +229,19 @@ body {
 }
 .navBar{
 	width:100%;
-	height:26px;
+	height:30px;
 	background-color: #282828;
 }
    /* ARTICLES BEGINS HERE */
-.normalBox{
-	margin: 0.5vw;
-	padding: 0.3vw;
-	background-color: rgba(241,241,241,1.00);
-	border: 1px solid rgba(204,204,204,1.00);
+#normalBox{
+	margin-top: 0.5vw;
+	margin-bottom: 0.5vw;
+	padding: 3px;
+	background-color: rgba(235,238,239,1.00);
 	color: rgba(0,0,0,1.00);
-	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+	font-family: Arial, sans-serif;
+	font-size: 15px;
+	color: #383838;
 }
 .aside {
     background-color: #282828;
@@ -233,6 +249,7 @@ body {
     color: #ffffff;
     text-align: center;
     font-size: 13px;
+		margin: 15px;
 }
    /* FOOTER BEGINS HERE */
 #footer {
@@ -242,7 +259,6 @@ body {
     color: #ffffff;
     text-align: center;
     font-size: 12px;
-    padding: 15px;
 	position: absolute;
 	margin-left: auto ;
 	margin-right: auto ;
@@ -253,8 +269,8 @@ body {
 	transform: translateX(-50%);
 }
 #footerFont{
-	margin-left: 0.5vw; 
-	margin-right: 0.5vw;
+	margin-left: 3px; 
+	margin-right: 3px;
 }
 #footerFont:hover {
     cursor: pointer;
@@ -285,6 +301,242 @@ body {
     to {bottom: 0px;}
 }
 
+/* CURRICULUM */
+
+
+.curriMain {
+    max-width:960px;
+	width: 100%;
+	height: auto;
+	overflow-y: hidden;
+	background-color: rgba(248,248,248,1.00);
+    background:
+		radial-gradient(#e9e8df 32%, transparent 32%),
+		radial-gradient(#e9e8df 32%, transparent 32%);
+    background-size: 21px 21px;
+    background-position: 0 0, 10px 10px;
+}
+[class*="curriBox-" ] {
+	background:
+		linear-gradient(135deg, rgba(255,255,255,.10) 25%, transparent 25%) -13px 0,
+		linear-gradient(225deg, rgba(255,255,255,.10) 25%, transparent 25%) -13px 0,
+		linear-gradient(315deg, rgba(255,255,255,.10) 25%, transparent 25%),
+		linear-gradient(45deg, rgba(255,255,255,.10) 25%, transparent 25%);
+	background-size: 26px 26px;
+	border-width: 10px;
+	border-color: rgba(255,255,255,.25);
+	border-style: solid;
+	float: left;
+	color: #ffffff;
+    text-align: center;
+    font-size: 13px;
+	padding: 15px;
+	background-color: #393939;
+
+}
+[class*="curriTitre-" ] {
+  padding: 5px;
+  font-family: Arial, sans-serif;
+  font-style: bold;
+}
+
+.curriTitre-1{
+
+	color: white;
+	width: auto;
+	font-size: 25px;
+	height: auto;
+	background-color: #282828;
+	text-align: center;
+	
+	}
+.curriTitre-2{
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+	color: white;
+	width: 95%;
+	height: auto;
+	background-color: #282828;
+	text-align: center;
+	font-size: 20px;
+	}
+.curriTitre-3{
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+	color: white;
+	width: 47.5%;
+	height: auto;
+	background-color: #282828;
+	text-align: center;
+	font-size: 20px;
+	}
+.curriTitre-4{
+
+	margin-top: 10px;
+	color: white;
+	width: calc(100% - 20px;);
+	height: auto;
+	background:
+		linear-gradient(135deg, rgba(255,255,255,.10) 25%, transparent 25%) -13px 0,
+		linear-gradient(225deg, rgba(255,255,255,.10) 25%, transparent 25%) -13px 0,
+		linear-gradient(315deg, rgba(255,255,255,.10) 25%, transparent 25%),
+		linear-gradient(45deg, rgba(255,255,255,.10) 25%, transparent 25%);
+	background-size: 26px 26px;
+	background-color: #121212;
+	border-width: 5px;
+	border-color: rgba(255,255,255,.30);
+	
+	border-style: solid;
+	text-align: center;
+	font-size: 20px;
+	}
+.curriBox-1{
+	width: 50%;
+	height: var(--scaledDiv);
+}
+.curriBox-2{
+
+	width: 100%;
+	background-color:white;
+	color: #393939;
+	padding: 0px;
+}
+.curriBox-3{
+	background-color:white;
+	width: 50%;
+	color: #393939;
+	padding: 5px;
+	border: 0px;
+	overflow: hidden;
+	height: var(--scaledDiv);
+	
+}
+.curriBox-4{
+	border: none;
+	background-color: rgba(255,255,255,0);
+	width: 100%;
+}
+.curriBox-5{
+	background-color:rgba(255,255,255,0);
+	width: 50%;
+	color: #393939;
+	padding: 0px;
+	border: 0px;
+}
+.curriBox-6{
+	background:
+		linear-gradient(135deg, rgba(255,255,255,.10) 25%, transparent 25%) -13px 0,
+		linear-gradient(225deg, rgba(255,255,255,.10) 25%, transparent 25%) -13px 0,
+		linear-gradient(315deg, rgba(255,255,255,.10) 25%, transparent 25%),
+		linear-gradient(45deg, rgba(255,255,255,.10) 25%, transparent 25%);
+	background-size: 26px 26px;
+	border-color: rgba(255,255,255,.25);
+	background-color: #393939;
+	width: 100%;
+	height: auto;
+}
+[class*="curriLine-" ] {
+  	float: left; 
+	padding: 2px;
+	font-size: 13px;
+}
+.curriLine-1{
+	margin-bottom: 2px;
+	width: 100%; 
+	height: 30%;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #cacfda;
+}
+.curriLine-2{
+	width: 25%; 
+	height: 100%;
+	color: #393939;
+}
+.curriLine-3{
+	width: 75%; 
+	height: 100%;
+	color: #393939;
+}
+.curriLine-4{
+	margin-bottom: 10px;
+	padding: 4px;
+	width: 100%; 
+	height: 20%;
+	background-color: rgba(255,255,255,100);
+}
+[class*="curriLoad-" ] {
+  	float: left; 
+	font-size: 13px;
+	height: 25px;
+	border-radius: 5px;
+	background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,.25) 10px, rgba(255,255,255,.25) 20px);
+}
+[class*="curriLoadTitre-" ]{
+
+	padding: 3px 2px 2px 2px;
+	font-size: 15px;
+	width: 30%; 
+	height: 100%;
+	color: #393939;
+	font-size: 85%;
+	line-height: 200%;
+}
+.curriLoadTitre-1{ 
+	float: left; 
+
+}
+.curriLoadTitre-2{ 
+	float: right;
+	
+	
+}
+.curriLoad-1{
+	width: 65%; 
+	background-color: #5a7bc6;
+}
+.curriLoad-2{
+	width: 40%; 
+	background-color: #7a3caa;
+}
+.curriLoad-3{
+	width: 40%; 
+	background-color: #d850c3;
+}
+.curriLoad-4{
+	width: 25%; 
+	background-color: #d85053;
+}
+.curriLoad-5{
+	width: 45%; 
+	background-color: #d8ca50;
+}
+.curriLoad-6{
+	float: right;
+	width: 50%; 
+	background-color: #e16f13;
+}
+.curriLoad-7{
+	float: right;
+	width: 35%; 
+	background-color: #6d3b27;
+}
+.curriLoad-8{
+	float: right;
+	width: 40%; 
+	background-color: #2a3231;
+}
+.curriLoad-9{
+	float: right;
+	width: 20%; 
+	background-color: #489890;
+}
+.curriLoad-10{
+	float: right;
+	width: 65%; 
+	background-color: #5d862c;
+}
+
    /* GALLERY CODE */
 * {
   box-sizing: border-box;
@@ -302,7 +554,7 @@ img {
 }
 /* Hide the images by default */
 .mySlides {
-  display: none;
+
 }
 /* Add a pointer when hovering over the thumbnail images */
 .cursor {
@@ -407,7 +659,7 @@ img {
 .modal-content {
     margin: auto;
     display: block;
-    max-height: 95vh;
+    max-height: 100vh;
 }
 /* Caption of Modal Image */
 #caption {
@@ -460,6 +712,13 @@ img {
 
 .menu-6 {width: 16.70%;}
    /*(RATIO WEB) */
+   
+[class*="line-"] {
+    width: 100%;
+	height: auto;
+	margin-top: 10px;
+
+}
 @media only screen and (min-width: 960px) {
 	.footer{
 		width: 960px;
@@ -475,32 +734,37 @@ img {
 	}
 	.column-1{  margin: 1vw 0px 0px 0.5vw;}
 	.column-2{   margin: 1vw 0px 0px 0.5vw;}
+	
     [class*="col-"] {
         width: 100%;
+		height: 100%;
     }
 	 [class*="menu-"] {
         width: 100%;
+		height: 29px;
+		padding-top: 7px;
     }
 	.header {
 	width:100%;
-	max-height: 20vh;
 	height: auto;
 	padding-left: auto;
 	padding-right: auto;
 	}
+	[class*="line-"] {
+        width: 100%;
+		height: var(--scaledDiv);	
+    }
 	#headerImage {
 	width:100%;
 	height: auto;
 	display: block;
-	max-width: 81.13vh;
-	max-height: 20vh;
 	margin-left: auto;
 	margin-right: auto;
 	
 	
 	}
 	.navBar{
-	height: 156px;
+	height: 128px;
 	}
 	.mainBoard{
         width: 100%;
@@ -524,6 +788,7 @@ img {
 		-ms-transform: translate(-50%, -50%);
 		transform: translate(-50%, -50%);
     }
+	
 	.containerGallery {
 		width: 100%;
 		height: auto;
@@ -570,7 +835,42 @@ img {
 	width: 98vw ;
 	max-width: 430px;
 	}
+	
+	[class*="curriTitre-" ] {
+		font-size: var(--scaledFontTitle);
+	}
+	[class*="curriBox-" ] {
+		
+		height: 100%;
+		font-size: var(--scaledFont);
+	}
+	.curriBox-6{
+	background:
+		linear-gradient(135deg, rgba(255,255,255,.10) 25%, transparent 25%) -13px 0,
+		linear-gradient(225deg, rgba(255,255,255,.10) 25%, transparent 25%) -13px 0,
+		linear-gradient(315deg, rgba(255,255,255,.10) 25%, transparent 25%),
+		linear-gradient(45deg, rgba(255,255,255,.10) 25%, transparent 25%);
+	background-size: 26px 26px;
+	border-color: rgba(255,255,255,.25);
+	background-color: #393939;
+	width: 100%;
+	height: auto;
+	}
 }
+@media only screen and (max-width: 799px) { 
+#headerImage {
+	width:100%;
+	height: auto;
+	display: block;
+	max-width: 81.13vh;
+	max-height: 200px;
+	margin-left: auto;
+	margin-right: auto;
+	
+	
+	}
+}
+
 }
 
 

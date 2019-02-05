@@ -10,6 +10,7 @@
 <body onload="headerIm()" onresize="headerIm()">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
+
 //SCROLLBAR SHENANIGANS- change width if scrollbar
 
 //check if mobile http://detectmobilebrowser.com/mobile
@@ -55,13 +56,16 @@ $('#footerMobile').css("height",footerHeight+"px");
 
 //HEADER
 function headerIm() {
-	
+		let root = document.documentElement;
+		
+		root.style.setProperty('--scaledDiv', "auto");
+		root.style.setProperty('--scaledFont', "4vw");
+		root.style.setProperty('--scaledFontTitle', "3vw");
 	if ($(document).width()>960){
 		document.getElementById("headerImage").src = "images/header4.png";
 	}
 	if ((check == 1)&&($(document).width()>799)) {
 		document.getElementById("headerImage").src = "images/header4.png";
-		alert("Souhail est Beau");
 	}else if ((check == 1)||($(document).width()<800)) {
 		document.getElementById("headerImage").src = "images/headerSmall.png";
 	}
@@ -96,37 +100,33 @@ function navbarCheck(){
   <div class="menu-2" onClick="parent.location='galerie.html'" value='Galerie'>Galerie</div>
   <div class="menu-3" onClick="parent.location='videos.html'" value='Videos'>Vidéos</div>
   <div class="menu-5" onClick="parent.location='curriculum.html'" value='Curriculum'>Curriculum</div>  
-  <div class="menu-4" onClick="parent.location='dioramas.html'" value='Dioramas'>Divers</div>
 
 </div>
 <div class="row">
-<div class="col-3 left">
-  <div class="aside" style="position: relative;">
+<div class="col-9" style="padding: 1%;">
+<div id="colArticle">
+  <h1>Bienvenue,</h1>
+  <p>Je vous remercie de visiter UnderAttack, mon domaine professionnel. Voici <b>un résumé</b> de ce que vous trouverez en le parcourant:</p>
+  <p><b>Une galerie d'image</b>, où j'y expose mon travail, art et design. </p>
+  <p><b>Une partie vidéo</b>, contenant des capsules, animations et divers projets. </p>
+  <p>Et enfin, <b>mon curriculum</b>, détaillants mes différents aquis, et regroupe l'ensemble des mes informations professionnelles et de mes coordonnées.</p>
+  <p>Je vous souhaite une agréable visite,<br><br><b>Lucien Lavoie</b></p>
+  
+</div>
+</div>
+<div class="col-3" style="float: right; padding-bottom: 1%">
+  <div class="curriBox-6" >
 	
-    <a href="https://twitter.com/lucien_lavoie">
-	<img src="images/profile.png" style="width: 80%; height: auto; position: relative;">
+    <div style="position: relative;"><a href="https://twitter.com/lucien_lavoie">
+	<img src="images/profile.png" style="max-width: 80%; height: auto; max-height: 95%; position: relative;">
 	<a href="https://twitter.com/lucien_lavoie">
-	<img src="images/twatter.png" style="width: 35%; height: auto; position: absolute; left: 60%; top: 30%;">
-	</a></img></img></a>
+	<img src="images/twatter.png" style="width: 40%; height: auto; position: absolute; left: 65%; top: 10%;">
+	</a></img></img></a></div>
 	
 	<h2>Lavoie Lucien</h2>
 	<p>lavoie_lucien@protonmail.com</p>
 	<p><img src="images/tel.png" style="width: 10%; height: auto; margin-right: 5px;"></img> 0497/27.50.18 </p>
-  </div>
-</div>
-<div class="col-6">
-  <h1>Bienvenue,</h1>
-  <p>Je vous remercie de visiter UnderAttack, mon domaine professionnel. Voici <b>un résumé</b> de ce que vous trouverez en le parcourant:</p>
-  <p><b>Une galerie d'image</b>, où j'y expose mon travail. </p>
-  <p><b>Une partie vidéo</b>, contenant capsules et animations. </p>
-  <p>Et enfin, mon curriculum, détaillants mes différents aquis.</p>
-  <p>J'expose aussi d'autre oeuvres dans "Divers", via un hobby ou autre.</p>
-  
-</div>
-
-<div class="col-3 right">
-  <div class="aside">
-    <h2>Graphisme</h2>
+	<h2>Graphisme</h2>
     <p>Dessin, compositions, 3D...</p>
     <h2>Design</h2>
     <p>Web design, mise en page, prise de vue...</p>
@@ -134,30 +134,53 @@ function navbarCheck(){
     <p>Animation, FX et compositions, montage ...</p>
   </div>
 </div>
+
+
+
+
+<div class="col-9" style="padding-left: 2%; padding-right: 2%; border: 0px;">
+<div  class="curriBox-2" style="text-align: justify; border: 0px;">
+  <h2>En Vitesse ...</h2>
+  <h3><u>Logiciels Aquis</u></h3>
+  <p><b>Adobe:</b> Photoshop, Illustrator, After Effect, Premiere, InDesign, Flash(AS2), Dreamweaver.
+  <br><b>Autre (Audiovisuel):</b> Fusion8, SoundForge, Audacity, Toonboom Harmony, 3DSmax.</p>
+  <h3><u>Autres Aquis</u></h3>
+  <p><b>Sur NotePad++:</b> HTML, CSS, JavaScript. <br><br>Animation, audiovisuel, art et design, illustration </p>
 </div>
-<div id="colArticle">
-  <h1>Plus d'informations ...</h1>
-  <h3><b><u>LOGICIELS AQUIS</u></b></h3>
-  <p><b>Adobe:</b> Photoshop, Illustrator, After Effect, Premiere, InDesign, Flash(AS2), Dreamweaver.</p>
-  <p><b>Autre (Audiovisuel):</b> Fusion8, SoundForge, Audacity, Toonboom Harmony, 3DSmax.</p>
-  <h3><b><u>LANGUAGES WEB</u></b></h3>
-  <p><b>Sur NotePad++:</b> HTML, CSS, JavaScript (Ce site en est l'exemple)</p>
-  <p>Plus de détails sur mon<u id="footerFont" onClick="parent.location='curriculum.html'"><b>Curriculum</b></u></p>
+</div>
+
+<div class="col-12" style="padding: 1%;">
+<div id="colArticle" style="text-align: justify;">
+  <p>Je suis jeune, motivé, sérieux et polyvalent. Je m'adapte rapidement à toutes tâches et responsabilités qui me sont confiées, et j'apprends rapidements les nouvelles informations qui me sont transmises.
+	<br>Calme et discret, je ne reste néanmoins pas inactif dans une équipe, je suis sincère et direct, en gardant respect et logique, quand la situation le demande.
+	</p><p>Avide de commencer ma vie professionnelle, j'aspire à rejoindre une entreprise qui pourra me montrer les ficelles de la réussite.</p>
+  <p><br><b>Lucien Lavoie</b></p>
   
+</div>
+</div>
+
 </div>
 <div id="footerMobile"></div>
 </div>
 
-
-<div id="footer">Created by Lucien Lavoie
+<div id="footer"><div style=" float: left;  width: 345px; margin-left: calc(50% - 172px);"><div style="width: 300px; padding: 5px;position: relative;">
   <u id="footerFont" onClick="parent.location='accueil.html'">Accueil</u>
   <u id="footerFont" onClick="parent.location='galerie.html'">Galerie</u>
   <u id="footerFont" onClick="parent.location='videos.html'">Vidéos</u>
   <u id="footerFont" onClick="parent.location='curriculum.html'">Curriculum</u>
-  <u id="footerFont" onClick="parent.location='dioramas.html'">Divers</u>
   <u id="footerFont" onClick="parent.location='index.html'">Welcome</u>
+  <a href="https://twitter.com/lucien_lavoie">
+	<img src="images/twatter.png" style="width: 30px; position: absolute; bottom: -3px;"></img>
+  </a>
+ </div>
+  
+	
+  </div>
+  
+  
 
 </div>
+
 </div>
 </body>
 </html>

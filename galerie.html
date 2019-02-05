@@ -11,34 +11,19 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 //SCROLLBAR SHENANIGANS- change width if scrollbar
-$(function(){
-var mobileHeight = 0;
-var footerHeight = 0;
-var smallBox = $('.containerBoard').hasScrollBarH() + $('.containerBoard').hasScrollBarIH();
-var ua = navigator.userAgent.toLowerCase();
-var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
-var isIOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
-var iDevices = [
-    'iPad Simulator',
-    'iPhone Simulator',
-    'iPod Simulator',
-    'iPad',
-    'iPhone',
-    'iPod'
-  ];
 
-	if (!!navigator.platform) {
-		while (iDevices.length) {
-			if (navigator.platform === iDevices.pop()){ 
-			smallBox=0; 
-			mobileHeight = 56;
-			}
-		}
-	}
-	if(isAndroid) {
-		smallBox=0;
-		mobileHeight = 56;
-	}
+//check if mobile http://detectmobilebrowser.com/mobile
+var check = 0;
+(function(a,b){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4)))
+check = 1;
+})
+(navigator.userAgent||navigator.vendor||window.opera,'http://detectmobilebrowser.com/mobile');
+//have or have not scrollbar
+$(function(){
+
+var smallBox = $('.containerBoard').hasScrollBarH() + $('.containerBoard').hasScrollBarIH();
+var footerHeight = 0;
+if (check == 0) {
 	if (smallBox > 0) {
 		$('.containerBoard').css("width", "calc(100vw + 17px)");
 		footerHeight = $('#footer').height()+40;
@@ -47,12 +32,19 @@ var iDevices = [
 		footerHeight = 0;
 		
 	}
-	var totalMobile = mobileHeight + footerHeight;
-	$('#footerMobile').css("height",totalMobile+"px");
+} 
+if (check == 1) {
+	footerHeight = $('#footer').height()+90;
+	$('.containerBoard').css("width", "100vw");
+}
+$('#footerMobile').css("height",footerHeight+"px");
+
+
 	});(jQuery);
 (function($) {
     $.fn.hasScrollBarH = function() {
     return this.get(0).scrollHeight > this.height();
+	
     }
 	})(jQuery);
 (function($) {
@@ -60,11 +52,16 @@ var iDevices = [
     return this.get(0).scrollHeight > this.innerHeight();
     }
 	})(jQuery);
+
 //HEADER
 function headerIm() {
+	
 	if ($(document).width()>960){
 		document.getElementById("headerImage").src = "images/header1.png";
-	}else {
+	}
+	if ((check == 1)&&($(document).width()>799)) {
+		document.getElementById("headerImage").src = "images/header1.png";
+	}else if ((check == 1)||($(document).width()<800)) {
 		document.getElementById("headerImage").src = "images/headerSmall.png";
 	}
 }
@@ -98,178 +95,248 @@ function navbarCheck(){
   <div class="menu-2" onClick="parent.location='galerie.html'" value='Galerie'>Galerie</div>
   <div class="menu-3" onClick="parent.location='videos.html'" value='Videos'>Vidéos</div>
   <div class="menu-5" onClick="parent.location='curriculum.html'" value='Curriculum'>Curriculum</div>  
-  <div class="menu-4" onClick="parent.location='dioramas.html'" value='Dioramas'>Divers</div>
 </div>
 
 
 <div class="row">
 
-<div class="normalBox">Archive d'images de mes différentes oeuvres.</div>
+<div class="containerGallery" style="padding-top:10px;">
+<!-- slideBox-->
+	<div class="mySlides">
+		<img id="myImg" src="" onClick = "imgModal()" alt=""></img>
+	</div> 
+	<!-- buttons-->
+	<a class="prev" onclick="plusSlides(-1)"><</a>
+	<a class="next" onclick="plusSlides(1)">></a>
+	<!-- title box-->
+	<div class="caption-container">
+		<p id="captionCaption"></p>
+	</div>
+</div>
 
-<div class="containerGallery">
-<!-- here, a slide for each image, with an "onclick" evvent wich lauch a fun-ction below (gallery code)-->
-  <div class="mySlides">
-    <div class="numbertext">1 / 12</div>
-    <img id="myImg1" src="galerie/img12.png" onClick = "imgModal()" alt="Inside the Circle of Stones 2018">
-  </div>
-
-  <div class="mySlides">
-    <div class="numbertext">2 / 12</div>
-    <img id="myImg2" src="galerie/img11.png" onClick = "imgModal()" alt="Fantasy (WIP) 2018">
-  </div>
-
-  <div class="mySlides">
-    <div class="numbertext">3 / 12</div>
-    <img id="myImg3" src="galerie/img10.png" onClick = "imgModal()" alt="The Eye of Madness 2018">
-  </div>
-    
-  <div class="mySlides">
-    <div class="numbertext">4 / 12</div>
-    <img id="myImg4" src="galerie/img9.png" onClick = "imgModal()" alt="Of Battle and Ancient Warcraft, C.V. cover 2018">
-  </div>
-
-  <div class="mySlides">
-    <div class="numbertext">5 / 12</div>
-    <img id="myImg5" src="galerie/img8.png" onClick = "imgModal()" alt="Mundus ov Mortas 2018">
-  </div>
-    
-  <div class="mySlides">
-    <div class="numbertext">6 / 12</div>
-    <img id="myImg6" src="galerie/img7.png" onClick = "imgModal()" alt="Garden of the Gods 2018">
-  </div>
+<!-- description-->
+	<div id="normalBox"></div>
   
-  <div class="mySlides">
-    <div class="numbertext">7 / 12</div>
-    <img id="myImg7" src="galerie/img6.png" onClick = "imgModal()" alt="UnderAttack Logo 2017">
-  </div>
-  
-  <div class="mySlides">
-    <div class="numbertext">8 / 12</div>
-    <img id="myImg8" src="galerie/img5.png" onClick = "imgModal()" alt="Oldworld 2017">
-  </div>
-  
-  <div class="mySlides">
-    <div class="numbertext">9 / 12</div>
-    <img id="myImg9" src="galerie/img4.png" onClick = "imgModal()" alt="The Funnel Infinity, Colorised">
-  </div>
-  
-   <div class="mySlides">
-    <div class="numbertext">10 / 12</div>
-    <img id="myImg10" src="galerie/img3.png" onClick = "imgModal()" alt="The Funnel Infinity 2017">
-  </div>
-  
-   <div class="mySlides">
-    <div class="numbertext">11 / 12</div>
-    <img id="myImg11" src="galerie/img2.png" onClick = "imgModal()" alt="Maurice Domaine 2017">
-  </div>
-  
-   <div class="mySlides">
-    <div class="numbertext">12 / 12</div>
-    <img id="myImg12" src="galerie/img1.png" onClick = "imgModal()" alt="The Beach 2016">
-  </div>
-    
-  <a class="prev" onclick="plusSlides(-1)"><</a>
-  <a class="next" onclick="plusSlides(1)">></a>
-
-  <div class="caption-container">
-    <p id="captionCaption"></p>
-  </div>
 <!-- here, button for each image in the gallery -->
-  <div class="riw">
+<div class="riw">
     <div class="column-2">
-      <img class="demo cursor" src="images/gal12.png" style="width:100%" onclick="currentSlide(1)" alt="Inside the Circle of Stones 2018">
+      <img class="demo cursor" src="images/gal18.png" style="width:100%" onclick="currentSlide(1)" alt="The Vanishing of Jessica Jules 2019">
 	  </div>
     <div class="column-1">
-      <img class="demo cursor" src="images/gal11.png" style="width:100%" onclick="currentSlide(2)" alt="Fantasy (WIP) 2018">
+      <img class="demo cursor" src="images/gal17.png" style="width:100%" onclick="currentSlide(2)" alt="">
     </div>
     <div class="column-1">
-      <img class="demo cursor" src="images/gal10.png" style="width:100%" onclick="currentSlide(3)" alt="The Eye of Madness 2018">
+      <img class="demo cursor" src="images/gal16.png" style="width:100%" onclick="currentSlide(3)" alt="">
     </div>
     <div class="column-1">
-      <img class="demo cursor" src="images/gal9.png" style="width:100%" onclick="currentSlide(4)" alt="Of Battle and Ancient Warcraft, C.V. cover 2018">
+      <img class="demo cursor" src="images/gal15.png" style="width:100%" onclick="currentSlide(4)" alt="">
     </div>
     <div class="column-1">
-      <img class="demo cursor" src="images/gal8.png" style="width:100%" onclick="currentSlide(5)" alt="Mundus ov Mortas 2018">
+      <img class="demo cursor" src="images/gal14.png" style="width:100%" onclick="currentSlide(5)" alt="Headers 2018">
     </div>    
     <div class="column-1">
-      <img class="demo cursor" src="images/gal7.png" style="width:100%" onclick="currentSlide(6)" alt="Garden of the Gods 2018">
+      <img class="demo cursor" src="images/gal13.png" style="width:100%" onclick="currentSlide(6)" alt="Inside the Circle of Stones, Colorised 2018">
     </div>
+</div>
+
+<div class="riw">
+    <div class="column-2">
+      <img class="demo cursor" src="images/gal12.png" style="width:100%" onclick="currentSlide(7)" alt="Inside the Circle of Stones 2018">
+	  </div>
+    <div class="column-1">
+      <img class="demo cursor" src="images/gal11.png" style="width:100%" onclick="currentSlide(8)" alt="Fantasy (WIP) 2018">
     </div>
-  </div>
+    <div class="column-1">
+      <img class="demo cursor" src="images/gal10.png" style="width:100%" onclick="currentSlide(9)" alt="The Eye of Madness 2018">
+    </div>
+    <div class="column-1">
+      <img class="demo cursor" src="images/gal9.png" style="width:100%" onclick="currentSlide(10)" alt="Of Battle and Ancient Warcraft, C.V. cover 2018">
+    </div>
+    <div class="column-1">
+      <img class="demo cursor" src="images/gal8.png" style="width:100%" onclick="currentSlide(11)" alt="Mundus ov Mortas 2018">
+    </div>    
+    <div class="column-1">
+      <img class="demo cursor" src="images/gal7.png" style="width:100%" onclick="currentSlide(12)" alt="Garden of the Gods 2018">
+    </div>
+</div>
+
   
-  <div class="riw">
+<div class="riw">
 	<div class="column-2">
-      <img class="demo cursor" src="images/gal6.png" style="width:100%" onclick="currentSlide(7)" alt="UnderAttack Logo 2017">
+      <img class="demo cursor" src="images/gal6.png" style="width:100%" onclick="currentSlide(13)" alt="UnderAttack Logo 2017">
     </div>
 	<div class="column-1">
-      <img class="demo cursor" src="images/gal5.png" style="width:100%" onclick="currentSlide(8)" alt="Oldworld 2017">
+      <img class="demo cursor" src="images/gal5.png" style="width:100%" onclick="currentSlide(14)" alt="Oldworld 2017">
     </div>
 	<div class="column-1">
-      <img class="demo cursor" src="images/gal4.png" style="width:100%" onclick="currentSlide(9)" alt="The Funnel Infinity, Colorised">
+      <img class="demo cursor" src="images/gal4.png" style="width:100%" onclick="currentSlide(15)" alt="The Funnel Infinity, Colorised">
     </div>
 	<div class="column-1">
-      <img class="demo cursor" src="images/gal3.png" style="width:100%" onclick="currentSlide(10)" alt="The Funnel Infinity 2017">
+      <img class="demo cursor" src="images/gal3.png" style="width:100%" onclick="currentSlide(16)" alt="The Funnel Infinity 2017">
     </div>
 	<div class="column-1">
-      <img class="demo cursor" src="images/gal2.png" style="width:100%" onclick="currentSlide(11)" alt="Maurice Domaine 2017">
+      <img class="demo cursor" src="images/gal2.png" style="width:100%" onclick="currentSlide(17)" alt="Maurice Domaine 2017">
     </div>
 	<div class="column-1">
-      <img class="demo cursor" src="images/gal1.png" style="width:100%" onclick="currentSlide(12)" alt="The Beach 2016">
+      <img class="demo cursor" src="images/gal1.png" style="width:100%" onclick="currentSlide(18)" alt="The Beach 2016">
+    </div>
+</div>
+
+  <!-- 3D -->
+<div class="caption-container">
+    <p>Design et 3D</p>
+</div>
+    <div class="riw">
+	<div class="column-2">
+      <img class="demo cursor" src="images/galA.png" style="width:100%" onclick="currentSlide(19)" alt="Rapport de Stage (3D) 2018">
+    </div>
+	<div class="column-1">
+      <img class="demo cursor" src="images/galB.png" style="width:100%" onclick="currentSlide(20)" alt="Twisted POP! (3D) 2015, Avant">
+    </div>
+	<div class="column-1">
+      <img class="demo cursor" src="images/galC.png" style="width:100%" onclick="currentSlide(21)" alt="Twisted POP! (3D) 2015, Arrière">
+    </div>
+	<div class="column-1">
+      <img class="demo cursor" src="images/galE.png" style="width:100%" onclick="currentSlide(22)" alt="Game Boy 1 (3D) 2015">
+    </div>
+	<div class="column-1">
+      <img class="demo cursor" src="images/galD.png" style="width:100%" onclick="currentSlide(23)" alt="Game Boy 2 (3D) 2015">
+    </div>
+	<div class="column-1">
+      <img class="demo cursor" src="images/galF.png" style="width:100%" onclick="currentSlide(24)" alt="Présentation Curriculum (3D) 2017">
     </div>
   </div>
+
 </div>
 <div id="myModal" class="modal">
   <img class="modal-content" id="img01">
-  <div id="caption"></div>
 </div>
 
 <script>
 //GALLERY CODE
-// Get the modal
-var modal = document.getElementById('myModal');
+//array for descritption,
+var des = [	"", 
+			"Illustration <b>destinée à l'index du mon site web</b>. En outre, travail de <b>perspective sur des formes rectiligne</b>, travail sur <b>effet de trames</b>, et essai de sable.", 
+			"b", 
+			"c", 
+			"d", 
+			"Les différentes illustraions utilisées comme tête de site (headers) pour mes différentes pages web.", 
+			"Illustration dans laquelle je travail <b>mes ombres ainsi que mes fumées et explosions</b>. La scène dépiccte un mage invoquant une large structure afin d'annihiler une comète. <br><b>Travail des couleurs</b> pour atteindre l'effet d'aveuglement.", 
+			"Illustration dans laquelle je travail <b>mes ombres ainsi que mes fumées et explosions</b>. La scène dépiccte un mage invoquant une large structure afin d'annihiler une comète.",
+			"Couleurs sans traits, dans <b>le but de créer les arrières plans discrets</b>. Inspiré d'oeuvres rétros. ",
+			"Créer <b>pour mon portfolio</b>, avec pour condition de laisser les quatres contours de l'image blanc.",
+			"Créer <b>pour mon curriculum</b>, avec pour condition de laisser les quatres contours de l'image blanc.",
+			"<b>Travail d'ombres et lumières</b>, ainsi qu'une tentative d'exprimer un mouvement. inspiré d'univers fantastiques (<i>Warhhamer, Warccraft, Dragonlance D&D</i>)",
+			"Dépicte un environement alien, <b>travail des formes féminines.</b>",
+			"Logo pour mon domaine et travaux en tant que freelance.", 
+			"Illustration pour un récit. Travail sur <b>une palette de couleur</b> (suite de couleur ayant un ton commun) et une <b>composition plus réfléchie</b>.",
+			"Illustration pour un récit. Travail sur des <b>couleurs moins saturées</b>, architecture et lignes droites.",
+			"Illustration pour un récit. Travail sur l'architecture et lignes droites.",
+			"Illustration pour une vidéo. Travail de <b>couleurs sans traits</b>, armure et métaux.",
+			"Illustration pour un récit. Travail de perspective dans un environnement naturel et <b>imitation aquarelle</b>.",
+			"Rapport de stage de 2017, rendu sur 3DSmax. <b>Design sur Illustrator.</b>", 
+			"Boite de céréal rendu sur 3DSmax et incorporé sur une photographie. <b>Design sur Illustrator</b> fait en 2014.",
+			"Boite de céréal rendu sur 3DSmax et incorporé sur une photographie. <b>Design sur Illustrator</b> fait en 2014. cette partie représente les jeux à l'arrière de la boîte.",
+			"Game Boy réalisé <b>sur 3DSmax</b>.",
+			"Game Boy réalisé <b>sur 3DSmax</b>.",
+			"Mon C.V. de 2017 dans le cadre d'une recherche de stage <b>réalisé sur Illustrator et rendu sur 3DSmax</b>.",
+			];
+var tit = [ "", 
+			"\"The Vanishing of Jessica Jules 2019\"", 
+			"\"a\"", 
+			"\"b\"", 
+			"\"c\"", 
+			"\"Headers WEB\" 2018",
+			"\"Inside the Circle of Stones \", Colorised 2018",
+			"\"Inside the Circle of Stones 2018\"", 
+			"\"Fantasy (WIP) 2018\"", 
+			"\"The Eye of Madness 2018\"", 
+			"\"Of Battle and Ancient Warcraft, C.V. cover 2018\"", 
+			"\"Mundus ov Mortas 2018\"", 
+			"\"Garden of the Gods 2018\"", 
+			"\"UnderAttack Logo 2017\"", 
+			"\"Oldworld 2017\"", 
+			"\"The Funnel Infinity, Colorised\"", 
+			"\"The Funnel Infinity 2017\"", 
+			"\"Maurice Domaine 2017\"",
+			"\"The Beach 2016\"",
+			"\"Rapport de Stage (3D) 2018\"",
+			"\"Twisted POP! (3D) 2015, Avant\"",
+			"\"Twisted POP! (3D) 2015, Arrière\"",
+			"\"Game Boy 1 (3D) 2015\"",
+			"\"Game Boy 2 (3D) 2015\"",
+			"\"Présentation Curriculum (3D) 2017\""
+			];
+var cur = [ "", 
+			"galerie/img18.png", 
+			"galerie/img17.png", 
+			"galerie/img16.png", 
+			"galerie/img15.png", 
+			"galerie/img14.png", 
+			"galerie/img13.png", 
+			"galerie/img12.png", 
+			"galerie/img11.png", 
+			"galerie/img10.png", 
+			"galerie/img9.png", 
+			"galerie/img8.png", 
+			"galerie/img7.png", 
+			"galerie/img6.png", 
+			"galerie/img5.png", 
+			"galerie/img4.png", 
+			"galerie/img3.png", 
+			"galerie/img2.png", 
+			"galerie/img1.png", 
+			"galerie/imgA.png", 
+			"galerie/imgB.png", 
+			"galerie/imgC.png", 
+			"galerie/imgD.png", 
+			"galerie/imgE.png", 
+			"galerie/imgF.png",
+			];
 
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-var slides = document.getElementsByClassName("mySlides");
-var modalImg = document.getElementById("img01");
-var captionText = document.getElementById("caption");
-
-//slideshow var
 var slideIndex = 1;
-showSlides(slideIndex);
+var slideFrame = document.getElementById("myImg");
+var slideCaption = document.getElementById("captionCaption");
+var slideText = document.getElementById("normalBox");
+var dots = document.getElementsByClassName("demo");
+var slideMax = 24;
+var modal = document.getElementById('myModal');
+var modalImg = document.getElementById("img01");
 
-//slideshow boutons next/back
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-  if (slideIndex > slides.length) {slideIndex = 1}
-  if (slideIndex < 1) {slideIndex = slides.length}
-  captionText = document.getElementById("caption");
-}
-//MODAL GALLERY - all the buttons launch this fun-ction :
+
+dots[slideIndex-1].className += " active";
+slideFrame.src = cur[slideIndex];
+slideText.innerHTML = des[slideIndex];
+slideCaption.innerHTML = tit[slideIndex];
+
+
 imgModal = function(){
     modal.style.display = "block";
-    modalImg.src = document.getElementById("myImg" + slideIndex).src;
-    captionText.innerHTML = document.getElementById("myImg" + slideIndex).alt;
+    modalImg.src = cur[slideIndex];
 }
-//slideshow show current image
+function plusSlides(n) {
+
+	slideLyb(slideIndex += n);
+	
+	if (slideIndex > slideMax) {slideIndex = 1}
+	if (slideIndex < 1) {slideIndex = slideMax}
+}
 function currentSlide(n) {
-  showSlides(slideIndex = n);
+  slideLyb(slideIndex = n);
 }
-//slideshow code
-function showSlides(n) {
-  var i;
-  var dots = document.getElementsByClassName("demo");
-  var captionCaptionText = document.getElementById("captionCaption");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-  captionCaptionText.innerHTML = dots[slideIndex-1].alt;
+slideLyb = function(n){
+
+	var i;
+	dots = document.getElementsByClassName("demo");
+	if (n > slideMax) {slideIndex = 1}
+	if (n < 1) {slideIndex = slideMax}
+	slideFrame.src = cur[slideIndex];
+	slideText.innerHTML = des[slideIndex];
+	slideCaption.innerHTML = tit[slideIndex];
+	for (i = 0; i < dots.length; i++) {
+		dots[i].className = dots[i].className.replace(" active", "");
+	}
+	dots[slideIndex-1].className += " active";
 }
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("modal")[0];
@@ -277,20 +344,23 @@ var span = document.getElementsByClassName("modal")[0];
 span.onclick = function() { 
     modal.style.display = "none";
 }
+
+
 </script>
   <div id="footerMobile"></div>
 </div>
 </div>
 
-<div id="footer">Created by Lucien Lavoie
+<div id="footer"><div style=" float: left;  width: 345px; margin-left: calc(50% - 172px);"><div style="width: 300px; padding: 5px;position: relative;">
   <u id="footerFont" onClick="parent.location='accueil.html'">Accueil</u>
-  <u id="footerFont"onClick="parent.location='galerie.html'">Galerie</u>
-  <u id="footerFont"onClick="parent.location='videos.html'">Vidéos</u>
-  <u id="footerFont"onClick="parent.location='curriculum.html'">Curriculum</u>
-  <u id="footerFont"onClick="parent.location='dioramas.html'">Divers</u>
-  <u id="footerFont"onClick="parent.location='index.html'">Welcome</u>
-
-</div>
+  <u id="footerFont" onClick="parent.location='galerie.html'">Galerie</u>
+  <u id="footerFont" onClick="parent.location='videos.html'">Vidéos</u>
+  <u id="footerFont" onClick="parent.location='curriculum.html'">Curriculum</u>
+  <u id="footerFont" onClick="parent.location='index.html'">Welcome</u>
+  <a href="https://twitter.com/lucien_lavoie">
+	<img src="images/twatter.png" style="width: 30px; position: absolute; bottom: -3px;"></img>
+  </a>
+ </div>
 
 </body>
 </html>
