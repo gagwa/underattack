@@ -1,2 +1,2 @@
-gallery = pictures and portfolio
+galerie = pictures and portfolio
 images = website architecture
