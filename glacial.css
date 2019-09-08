@@ -256,8 +256,8 @@ body {
     background-color: #282828;
 	max-width: 960px;
 	width:100%;
-    color: #ffffff;
 	padding: 10px;
+    color: #ffffff;
     text-align: center;
     font-size: 12px;
 	position: absolute;
@@ -621,6 +621,7 @@ img {
 }
 .column-1{  margin: 0px 0px 0px 10px;}
 .column-2{  margin: 0px 0px 0px 5px;}
+.column-3{  margin-left: 41%;}
 /* Add a transparency effect for thumnbail images */
 .demo {
   opacity: 0.6;
@@ -723,6 +724,7 @@ img {
 @media only screen and (min-width: 960px) {
 	.footer{
 		width: 960px;
+		
 	}
 }
 @media only screen and (max-width: 959px) {
