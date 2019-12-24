@@ -69,33 +69,28 @@ body {
 	margin-bottom: 1%;
 }
 [class*="video-" ] {
-	width: 90%;
-	
+	width: 100%;
 	height: auto;
-	background-color: rgba(241,241,241,1.00);
-	border: 1px solid rgba(204,204,204,1.00);
-	margin-left: auto;
-	margin-right: auto;
-	padding-bottom: 2%;
 	margin-top: 2%;
-	margin-bottom: 2%;
 }
 [class*="videoTitre-" ]{
 	color: rgba(255,255,255,1.00);
-	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+
 	font-size: 13pt;
-	height: 2%;
-	margin: 1vw 1vw 1vw 1vw;
+	height: auto;
+	margin: 1vw 0vw 1vw 0vw;
+	text-align: center;
 	background-color: #282828;
-	border: 1px solid rgba(10,10,10,1.00);
-	padding-left: 1.5%;
-	padding-top: 0.5%;
+	padding: 1.2vw 1vw 1.2vw 1vw;
+	color: white;
+	width: 100%;
+
 }
 [class*="descriptionVideo-" ]{
 	width: 76%;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 3%;
+
 	padding: 1%;
 	background-color: rgba(255,255,255,1.00);
 	border: 1px solid rgba(218,218,218,1.00);
@@ -221,7 +216,7 @@ body {
 	letter-spacing: 5px;
 	font-weight: bold;
 	float: left;
-	width: 25%;
+	width: 20%;
 	height:26px;
 }
 [class*="menu-" ]:hover{
@@ -234,14 +229,14 @@ body {
 }
    /* ARTICLES BEGINS HERE */
 #normalBox{
-	margin-top: 0.5vw;
-	margin-bottom: 0.5vw;
-	padding: 3px;
+	margin: 1vh 0vh 1vh 0vh;
+	padding: 1vh;
 	background-color: rgba(235,238,239,1.00);
 	color: rgba(0,0,0,1.00);
 	font-family: Arial, sans-serif;
 	font-size: 15px;
 	color: #383838;
+	height: 8vh;
 }
 .aside {
     background-color: #282828;
@@ -263,7 +258,7 @@ body {
 	position: absolute;
 	margin-left: auto ;
 	margin-right: auto ;
-	right: auto;
+
 	left:auto;
 	left: 50%;
 	-ms-transform: translateX(-50%);
@@ -619,9 +614,14 @@ img {
   height: 150px;
   overflow: hidden;
 }
-.column-1{  margin: 0px 0px 0px 10px;}
-.column-2{  margin: 0px 0px 0px 5px;}
-.column-3{  margin-left: 41%;}
+.column-1{  margin-left: 41%;}
+.column-2{  margin-left: 32.8%;}
+.column-3{  margin-left: 24.6%;}
+.column-4{  margin-left: 16.4%;}
+.column-5{  margin-left: 8.2%;}
+
+.column-6{  margin: 0px 0px 0px 5px;}
+.column-7{  margin: 0px 0px 0px 10px;}
 /* Add a transparency effect for thumnbail images */
 .demo {
   opacity: 0.6;
@@ -729,14 +729,24 @@ img {
 }
 @media only screen and (max-width: 959px) {
     /* For mobile phones and tablet: */
+	#normalBox{
+	height: 20vh;
+}
 	[class*="column-" ] {
 	float: left;
 	height: 16vw;
 	width: 16vw;
 	overflow: hidden;
 	}
-	.column-1{  margin: 1vw 0px 0px 0.5vw;}
-	.column-2{   margin: 1vw 0px 0px 0.5vw;}
+	.column-1{  margin-left: 41%; margin-top: 1vw;}
+	.column-2{  margin-left: 32.8%; margin-top: 1vw;}
+	.column-3{  margin-left: 24.6%; margin-top: 1vw;}
+	.column-4{  margin-left: 16.4%; margin-top: 1vw;}
+	.column-5{  margin-left: 8.2%; margin-top: 1vw;}
+
+	.column-6{  margin: 1vw 0px 0px 0.5vw;}
+	.column-7{   margin: 1vw 0px 0px 0.5vw;}
+	
 	
     [class*="col-"] {
         width: 100%;
